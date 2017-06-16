@@ -114,7 +114,9 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 */
 
 slapp.message('.*', 'mention', (msg) => {
+  console.log('begin metadata');
   console.log(slapp.meta.channel_id);
+  console.log('end metadata');
   let dice = Math.random();
   let answer = 'Goodbye.';
   if (dice > 0.9) {
