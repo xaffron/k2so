@@ -118,30 +118,31 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 slapp.message('goodnight', 'mention', (msg) => {
   var dice = Math.random();
   console.log('Dice: ' + dice);
-  var answer = '';
-  if (dice>0.9) {
+  var answer = 'Goodbye.';
+/*  if (dice > 0.9) {
     answer='I\'ll be there for you. The captain said I had to.';
-  } else if (dice >0.7) {
+  } else if (dice > 0.7) {
     answer='The captain says you\'re a friend. I will not kill you.';
-  } else if (dice >0.6) {
+  } else if (dice > 0.6) {
     answer='There were a lot of explosions for two people blending in.';
-  } else if (dice >0.5) {
+  } else if (dice > 0.5) {
     answer='Congratulations, you\'re being rescued.';
-  } else if (dice >0.4) {
+  } else if (dice > 0.4) {
     answer='Why do you get a blaster and I don\'t?';
-  } else if (dice >0.3) {
+  } else if (dice > 0.3) {
     answer='I find that answer vague and unconvincing.';
-  } else if (dice >0.2) {
+  } else if (dice > 0.2) {
     answer='I\'m not very optimistic about our odds.';
-  } else if (dice >0.1) {
+  } else if (dice > 0.1) {
     answer='Quiet!  And there\'s a fresh one if you mouth off again.';
   } else {
-    answer='Goodbye.'
+    answer='Goodbye.';
   };
+  */
   console.log('Answer: ' + answer);
   msg.say({
       as_user: true,
-      text: answer,
+      text: answer
      });
 })
 
