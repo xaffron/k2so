@@ -162,7 +162,7 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
       if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
         answer += '  This is only a drill.  If there were a flash event today, you would need to report to duty immediately.';
         msg.say({
-          channel: 'G2BHD8H0F',
+          channel: 'G2B6KC10S',
           link_names: true,
           as_user: true,
           text: answer
