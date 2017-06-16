@@ -112,6 +112,14 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
   }
 })
 */
+slapp.message('.*', '.*', (msg) => {
+  if (msg.body.event.channel=="G5UJ1K5FT") {
+    msg.say({
+      as_user: true,
+      text: 'someone called?'
+    });
+  }
+})
 
 slapp.message('.*', 'mention', (msg) => {
   var dice = Math.random();
@@ -135,23 +143,11 @@ slapp.message('.*', 'mention', (msg) => {
   } else {
     answer='Goodbye.';
   };
-  console.log(`begin metadata`);
-  console.log(msg.body.event.channel);
-  // G5UJ1K5FT
-  console.log(`Listening on port AAA`);
-  if (msg.body.event.channel=="G5UJ1K5FT") {
-    console.log('someone called?');
-  }
-/*
-msg.say({
-      as_user: true,
-      text: answer
-     });
-    */
+
   msg.say({
       as_user: true,
-      text: 'Something is wrong!!'
-     });
+      text: answer
+    });
 })
 
 // attach Slapp to express server
