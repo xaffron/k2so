@@ -33,10 +33,17 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 })
 
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
+    msg.say({
+      channel: 'G2BHD8H0F',
+      as_user: true,
+      text: answer
+    });
 slapp
   .message('enroll', ['direct_mention', 'direct_message'], (msg, text) => {
-    msg
-      .say(`${text}, how are you?`)
+    msg.say({
+        as_user: true,
+        text: 'Initiating enrollment sequence for user ' + msg.body.event.user
+      })
       // sends next event from user to this route, passing along state
       .route('how-are-you', { greeting: text })
   })
@@ -144,16 +151,17 @@ slapp.message('.*', 'mention', (msg) => {
 })
 
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
-  let dt = new Date(Date.now()+3600000*-5);
-  let hr = dt.getHours();
-  let answer = 'Captain, it is ' + hr + '00 hours.';
-  if (hr==11 || hr==15 || hr==17 || hr==19 || hr==20 || hr==22) {
-    answer += '  If there were a flash event today, you would need to report to duty immediately.';
-  }
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
+    let dt = new Date(Date.now()+3600000*-5);
+    let hr = dt.getHours();
+    let answer = 'Captain, it is ' + hr + '00 hours.';
+    if (hr==11 || hr==15 || hr==17 || hr==19 || hr==20 || hr==22) {
+      answer += '@eoa  If there were a flash event today, you would need to report to duty immediately.';
+    }
     msg.say({
       channel: 'G2BHD8H0F',
       as_user: true,
+      link_names: true,
       text: answer
     });
   }
