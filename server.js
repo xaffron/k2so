@@ -116,7 +116,7 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
     msg.say({
       as_user: true,
-      text: 'Someone called?'
+      text: 'The time now is ' & Date.now().toTimeString();
     });
   }
 })
