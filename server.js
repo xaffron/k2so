@@ -160,7 +160,7 @@ var app = {
   slapp,
   server,
   kv: BeepBoopPersist({ provider: config.persist_provider }),
-  chronos: Chronos({ 
+  chronos: new Chronos({ 
     beepboop_token: config.beepboop_token, 
     beepboop_project_id: config.beepboop_project_id
   })
