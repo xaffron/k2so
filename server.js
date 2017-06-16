@@ -135,9 +135,9 @@ slapp.message('.*', 'mention', (msg) => {
   } else {
     answer='Goodbye.';
   };
-  console.log('begin metadata');
-  console.log(msg.body.event.item.channel);
-  console.log('end metadata');
+  console.log(`begin metadata`);
+\\  console.log(msg.body.event.item.channel);
+  console.log(`Listening on port AAA`);
 /*
 msg.say({
       as_user: true,
