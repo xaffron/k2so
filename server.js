@@ -112,19 +112,11 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
   }
 })
 */
-slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
-  let msgbody = 'The time now is ' + new Date(Date.now()+3600000*-5).toTimeString();
-  if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
-    msg.say({
-      as_user: true,
-      text: msgbody
-    });
-  }
-})
+
 
 slapp.message('.*', 'mention', (msg) => {
-  var dice = Math.random();
-  var answer = 'Goodbye.';
+  let dice = Math.random();
+  let answer = 'Goodbye.';
   if (dice > 0.9) {
     answer='I\'ll be there for you. The captain said I had to.';
   } else if (dice > 0.7) {
@@ -151,6 +143,15 @@ slapp.message('.*', 'mention', (msg) => {
     });
 })
 
+slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
+  let answer = 'The time now is ' + new Date(Date.now()+3600000*-5).toLocaleTimeString();
+  if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
+    msg.say({
+      as_user: true,
+      text: answer
+    });
+  }
+})
 // attach Slapp to express server
 var server = slapp.attachToExpress(express())
 
