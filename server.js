@@ -4,6 +4,11 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
+const officers = ('U2A3YP9MH','eoa',-5,
+                   'U2B6M7MSR','schwefumbler',-6,
+                   'U4FA4LE5N','alphonsis',-7,
+                   'XXX','bluemoose',-4,
+                   'YYY','yer.reklaw',-8)
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -147,6 +152,9 @@ slapp.message('.*', 'mention', (msg) => {
 
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
+    console.log('trying now');
+    console.log(msg.body.event.user);
+    console.log(officers.indexOf('U4FA4LE5N'));
     let dt = new Date(Date.now()+3600000*-5);
     let hr = dt.getHours();
     let answer = 'Captain, it is ' + hr + '00 hours.';
