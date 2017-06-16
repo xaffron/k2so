@@ -117,9 +117,9 @@ slapp.message('goodnight', 'mention', (msg) => {
   msg.say('sweet dreams :crescent_moon: ');
   msg.say({
       text: 'What?',
+      as_user: true,
       attachments: [
         {
-          as_user: true,
           fallback: 'Yes or No?',
           callback_id: 'yesno_callback',
           actions: [
@@ -127,7 +127,7 @@ slapp.message('goodnight', 'mention', (msg) => {
             { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
           ]
         }]
-      })
+      });
 })
 
 // attach Slapp to express server
