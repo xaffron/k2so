@@ -147,6 +147,7 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
   let answer = 'The time now is ' + new Date(Date.now()+3600000*-5).toLocaleTimeString();
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
     msg.say({
+      channel: 'G2BHD8H0F',
       as_user: true,
       text: answer
     });
