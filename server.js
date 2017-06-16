@@ -135,10 +135,9 @@ slapp.message('.*', 'mention', (msg) => {
   } else {
     answer='Goodbye.';
   };
-//  console.log('begin metadata');
- // console.log(slapp.meta.channel_id);
- // console.log('end metadata');
- // answer=slapp.meta.channel_id+'';
+  console.log('begin metadata');
+  console.log(msg.body.event.item.channel);
+  console.log('end metadata');
 /*
 msg.say({
       as_user: true,
