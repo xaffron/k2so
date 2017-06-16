@@ -117,7 +117,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 
 slapp.message('goodnight', 'mention', (msg) => {
   msg.say({
-      as_user: true
+      as_user: true,
       text: 'I\'ll Be There For You. The Captain Said I Had To.',
       })
 })
