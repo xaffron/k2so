@@ -152,7 +152,7 @@ slapp.message('.*', 'mention', (msg) => {
 
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
-    for (i=0;i<10;i+=3) {
+    for (let i=0;i<10;i+=3) {
       let usrID = officers[i];
       let uName = '@'+ officers[i+1];
       let offset = officers[i+2];
