@@ -152,15 +152,15 @@ slapp.message('.*', 'mention', (msg) => {
 
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
-    for (let i=0;i<10;i+=3) {
+    for (let i=0;i<officers.length;i+=3) {
       let usrID = officers[i];
       let uName = '@'+ officers[i+1];
       let offset = officers[i+2];
       let dt = new Date(Date.now()+3600000*offset);
       let hr = dt.getHours();
-      let answer = uName + ' Captain, it is ' + hr + '00 hours.';
+      let answer = 'Captain ' + uName + ', it is ' + hr + '00 hours.';
       if (hr==11 || hr==15 || hr==17 || hr==19 || hr==20 || hr==22) {
-        answer += '  If there were a flash event today, you would need to report to duty immediately.';
+        answer += '  This is only a drill.  If there were a flash event today, you would need to report to duty immediately.';
       }
 //        link_names: true,
       msg.say({
