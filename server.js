@@ -112,11 +112,11 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
   }
 })
 */
-slapp.message('.*', '.*', (msg) => {
-  if (msg.body.event.channel=="G5UJ1K5FT") {
+slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
+  if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
     msg.say({
       as_user: true,
-      text: 'someone called?'
+      text: 'Someone called?'
     });
   }
 })
