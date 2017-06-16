@@ -3,6 +3,7 @@
 const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
+const BeepBoopPersist = require('beepboop-persist')
 const Context = require('slapp-context-beepboop')
 const needle = require('needle')
 
