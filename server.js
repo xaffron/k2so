@@ -147,6 +147,9 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
   let dt = new Date(Date.now()+3600000*-5);
   let hr = dt.getHours();
   let answer = 'Captain, it is ' + hr + '00 hours.';
+  if (hr==11 || hr==15 || hr==17 || hr==19 || hr==20 || hr==22) {
+    answer += '  If there were a flash event today, you would need to report to duty immediately.';
+  }
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
     msg.say({
       channel: 'G2BHD8H0F',
