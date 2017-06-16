@@ -139,7 +139,7 @@ slapp.message('.*', 'mention', (msg) => {
   console.log(msg.body.event.channel);
   // G5UJ1K5FT
   console.log(`Listening on port AAA`);
-  if (msg.body.event.channel=='G5UJ1K5FT') {
+  if (msg.body.event.channel=="G5UJ1K5FT") {
     console.log('someone called?');
   }
 /*
