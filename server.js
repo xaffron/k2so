@@ -136,11 +136,11 @@ slapp.message('goodnight', 'mention', (msg) => {
     answer='Quiet!  And there\'s a fresh one if you mouth off again.';
   } else {
     answer='Goodbye.'
-  }
+  };
   msg.say({
       as_user: true,
       text: answer,
-     })
+     });
 })
 
 // attach Slapp to express server
