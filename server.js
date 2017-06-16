@@ -57,7 +57,7 @@ let config = module.exports = {
     return config
   }
 }
-
+/*
 //BEGIN CHRONOS
 module.exports = (config) => {
   return new Chronos(config)
@@ -150,6 +150,7 @@ class Chronos {
     }
   }
 }
+*/
 
 //END CHRONOS
 
