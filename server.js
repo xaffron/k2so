@@ -113,7 +113,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 })
 */
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
-  let msgbody = 'The time now is ' + new Date(Date.now()+3600000*-5).toLocaleTimeString();
+  let msgbody = 'The time now is ' + new Date(Date.now()+3600000*-5).toTimeString();
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
     msg.say({
       as_user: true,
