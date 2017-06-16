@@ -152,21 +152,23 @@ slapp.message('.*', 'mention', (msg) => {
 
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
-    console.log('trying now');
-    console.log(msg.body.event.user);
-    console.log(officers.indexOf('U4FA4LE5N'));
-    let dt = new Date(Date.now()+3600000*-5);
-    let hr = dt.getHours();
-    let answer = 'Captain, it is ' + hr + '00 hours.';
-    if (hr==11 || hr==15 || hr==17 || hr==19 || hr==20 || hr==22) {
-      answer += '@eoa  If there were a flash event today, you would need to report to duty immediately.';
+    for (i=0;i<10;i+=3) {
+      let usrID = officers[i];
+      let uName = '@'+ officers[i+1];
+      let offset = officers[i+2];
+      let dt = new Date(Date.now()+3600000*offset);
+      let hr = dt.getHours();
+      let answer = uName + ' Captain, it is ' + hr + '00 hours.';
+      if (hr==11 || hr==15 || hr==17 || hr==19 || hr==20 || hr==22) {
+        answer += '  If there were a flash event today, you would need to report to duty immediately.';
+      }
+//        link_names: true,
+      msg.say({
+        channel: 'G2BHD8H0F',
+        as_user: true,
+        text: answer
+      });
     }
-    msg.say({
-      channel: 'G2BHD8H0F',
-      as_user: true,
-      link_names: true,
-      text: answer
-    });
   }
 })
 // attach Slapp to express server
