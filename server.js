@@ -113,10 +113,12 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 })
 */
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
+  console.log(Date.now().toTimeString());
+  let msgbody = 'The time now is';
   if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
     msg.say({
       as_user: true,
-      text: 'The time now is ' & Date.now().toTimeString()
+      text: msgbody
     });
   }
 })
