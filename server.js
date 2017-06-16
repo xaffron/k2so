@@ -4,7 +4,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
-const officers = ('U2A3YP9MH','eoa',-5,
+var officers = ('U2A3YP9MH','eoa',-5,
                    'U2B6M7MSR','schwefumbler',-6,
                    'U4FA4LE5N','alphonsis',-7,
                    'XXX','bluemoose',-4,
