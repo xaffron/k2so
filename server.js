@@ -115,7 +115,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 })
 */
 
-slapp.message('goodnight', 'mention', (msg) => {
+slapp.message('.*', 'mention', (msg) => {
   var dice = Math.random();
   var answer = 'Goodbye.';
   if (dice > 0.9) {
