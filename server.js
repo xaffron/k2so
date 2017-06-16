@@ -18,7 +18,7 @@ var slapp = Slapp({
 var HELP_TEXT = `
 I will respond to the following messages:
 \`help\` - to see this message.
-\`hi\` - to demonstrate a conversation that tracks state.
+\`enroll\` - to, well, enroll.
 \`thanks\` - to demonstrate a simple response.
 \`<type-any-other-text>\` - to demonstrate a random emoticon response, some of the time :wink:.
 \`attachment\` - to see a Slack attachment message.
@@ -34,7 +34,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
 slapp
-  .message('^(hi|hello|hey)$', ['direct_mention', 'direct_message'], (msg, text) => {
+  .message('enroll', ['direct_mention', 'direct_message'], (msg, text) => {
     msg
       .say(`${text}, how are you?`)
       // sends next event from user to this route, passing along state
