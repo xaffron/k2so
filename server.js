@@ -117,6 +117,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 
 slapp.message('goodnight', 'mention', (msg) => {
   var dice = Math.random();
+  console.log('Dice: ' + dice);
   var answer = '';
   if (dice>0.9) {
     answer='I\'ll be there for you. The captain said I had to.';
@@ -137,6 +138,7 @@ slapp.message('goodnight', 'mention', (msg) => {
   } else {
     answer='Goodbye.'
   };
+  console.log('Answer: ' + answer);
   msg.say({
       as_user: true,
       text: answer,
