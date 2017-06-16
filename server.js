@@ -138,7 +138,7 @@ slapp.message('.*', 'mention', (msg) => {
   console.log('begin metadata');
   console.log(slapp.meta.channel_id);
   console.log('end metadata');
-  answer=slapp.meta.channel_id;
+  answer=slapp.meta.channel_id+'';
   msg.say({
       as_user: true,
       text: answer
