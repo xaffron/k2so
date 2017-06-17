@@ -42,6 +42,15 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
 })
 
+slapp.message('flashevent', 'direct_mention', (msg)=> {
+  msg.say('Storing status.')
+  msg.say('You said: ' + msg.body.event.message)
+  kv.set(16,'CRAFTY!', function (err) {
+    // living dangerously
+  })
+  
+})
+
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
 slapp
   .message('enroll', ['direct_mention', 'direct_message'], (msg, text) => {
@@ -126,8 +135,11 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
       let dt = new Date(Date.now()+3600000*offset);
       let hr = dt.getHours();
       let answer = 'Captain ' + uName + ':';
-      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        tempFLASH='FLASH'
+//      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
+        tempFLASH=kv.get(17, function (err, val) {
+          // check for err
+          console.log('ERROR fetching from kv');
+        })
       }
         answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
         msg.say({
