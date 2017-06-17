@@ -48,7 +48,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 })
 
 slapp.message('flashevent_on', 'direct_mention', (msg)=> {
-  kv.set("17", "FLAAASH", (err) => {
+  kv.set("TESTEST", "FLAAASH", (err) => {
      // check for err
 msg.say(''+err)
     /*
@@ -58,7 +58,7 @@ msg.say(''+err)
      msg.say('ERROR setting to kv');
      */
   })
-  let result = kv.get("17", (err, val)=> {
+  let result = kv.get("TESTEST", (err, val)=> {
      // check for err
   //  msg.say(err)
   //  msg.say(val)
