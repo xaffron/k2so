@@ -115,6 +115,32 @@ slapp.message('attachment', ['mention', 'direct_message'], (msg) => {
   })
 })
 
+slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
+  //if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf("chime")>=0) {
+    //for (let i=0;i<officers.length;i+=3) {
+    var i=0;
+      let tempFLASH='';
+      let usrID = officers[i];
+      let uName = '@'+ officers[i+1];
+      let offset = officers[i+2];
+      let dt = new Date(Date.now()+3600000*offset);
+      let hr = dt.getHours();
+      let answer = 'Captain ' + uName + ':';
+      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
+        tempFLASH='FLASH'
+      }
+        answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
+        msg.say({
+          channel: SANDBOX,
+          link_names: true,
+          as_user: true,
+          text: answer
+        });
+      //}
+    //}
+  //}
+})
+
 // Catch-all for any other responses not handled above
 /*
 slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
@@ -125,8 +151,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 })
 */
 
-
-slapp.message('.*', 'mention', (msg) => {
+slapp.message('.*', ['mention', 'direct_message'], (msg) => {
   let dice = Math.random();
   let answer = '';
   if (dice > 0.9) {
@@ -157,31 +182,7 @@ slapp.message('.*', 'mention', (msg) => {
     });
 })
 
-slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
-  if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf("chime")>=0) {
-    //for (let i=0;i<officers.length;i+=3) {
-    var i=0;
-      let tempFLASH='';
-      let usrID = officers[i];
-      let uName = '@'+ officers[i+1];
-      let offset = officers[i+2];
-      let dt = new Date(Date.now()+3600000*offset);
-      let hr = dt.getHours();
-      let answer = 'Captain ' + uName + ':';
-      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        tempFLASH='FLASH'
-      }
-        answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
-        msg.say({
-          channel: SANDBOX,
-          link_names: true,
-          as_user: true,
-          text: answer
-        });
-      //}
-    //}
-  }
-})
+
 // attach Slapp to express server
 var server = slapp.attachToExpress(express())
 
