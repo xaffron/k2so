@@ -4,12 +4,15 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
-var officers = ['U2A3YP9MH','eoa',-5,
+const officers = ['U2A3YP9MH','eoa',-5,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
                    'U2BB4L4HY','ajuntapaul',-5,
                    'U2AFRRVL1','bluemoose',-5,
                    'U2A6642T1','yer.reklaw',-7]
+const OFFICERS_PRIVATE = 'G2B6KC10S'
+const SANDBOX = ''
+const BOT_REMINDERS 'G5UJ1K5FT'
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -154,8 +157,10 @@ slapp.message('.*', 'mention', (msg) => {
 })
 
 slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
-  if (msg.body.event.channel=="G5UJ1K5FT" && msg.body.event.text.indexOf("chime")>=0) {
-    for (let i=0;i<officers.length;i+=3) {
+  if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf("chime")>=0) {
+    //for (let i=0;i<officers.length;i+=3) {
+    var i=0;
+      let tempFLASH='';
       let usrID = officers[i];
       let uName = '@'+ officers[i+1];
       let offset = officers[i+2];
@@ -163,15 +168,17 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
       let hr = dt.getHours();
       let answer = 'Captain ' + uName + ':';
       if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        answer += '  This is only a drill.  But if there were a flash event today, you would need to report to duty immediately.';
+        tempFLASH='FLASH'
+      }
+        answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(hour ' +hr+ '). '+tempFLASH;
         msg.say({
-          channel: 'G2B6KC10S',
+          channel: OFFICERS_PRIVATE,
           link_names: true,
           as_user: true,
           text: answer
         });
-      }
-    }
+      //}
+    //}
   }
 })
 // attach Slapp to express server
