@@ -12,7 +12,7 @@ const officers = ['U2A3YP9MH','eoa',-5,
                    'U2A6642T1','yer.reklaw',-7]
 const OFFICERS_PRIVATE = 'G2B6KC10S'
 const SANDBOX = ''
-const BOT_REMINDERS 'G5UJ1K5FT'
+const BOT_REMINDERS = 'G5UJ1K5FT'
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -172,7 +172,7 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
       }
         answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(hour ' +hr+ '). '+tempFLASH;
         msg.say({
-          channel: OFFICERS_PRIVATE,
+          channel: SANDBOX,
           link_names: true,
           as_user: true,
           text: answer
