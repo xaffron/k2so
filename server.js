@@ -44,7 +44,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 
 slapp.message('flashevent', 'direct_mention', (msg)=> {
   msg.say('Storing status.')
-  msg.say('You said: ' + msg.body.event.message)
+  msg.say('You said: ' + msg.body.event.text)
   kv.set(16,'CRAFTY!', function (err) {
     // living dangerously
   })
