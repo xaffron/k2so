@@ -70,7 +70,7 @@ msg.say(''+err)
     msg.say(process.env.BEEPBOOP_TOKEN)
      msg.say('ERROR setting to kv');
      */
-  })
+  //})
       kv.list(function (err, keys) {
       // handle error :)
       // keys should be ['a key']
