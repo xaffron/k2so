@@ -136,7 +136,7 @@ slapp.message('.*', 'mention', (msg) => {
   } else if (dice > 0.5) {
     answer='Congratulations, you\'re being rescued.';
   } else if (dice > 0.4) {
-    answer='Why do you get a blaster and I don\'t?';
+    answer='I’d really rather not. The odds of the Coruscant Underworld Police showing up are one in 93 million.';
   } else if (dice > 0.3) {
     answer='I find that answer vague and unconvincing.';
   } else if (dice > 0.2) {
