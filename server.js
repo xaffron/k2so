@@ -76,16 +76,16 @@ msg.say(''+err)
       // keys should be ['a key']
       console.log(keys);
     })
+//  })
 
-  let result = kv.get("TESTEST", (err, val)=> {
+  //let result = kv.get("TESTEST", (err, val)=> {
      // check for err
   //  msg.say(err)
   //  msg.say(val)
   //  msg.say(process.env.BEEPBOOP_PROJECT_ID)
   //  msg.say(process.env.BEEPBOOP_TOKEN)
   //   msg.say('ERROR getting from kv');
-  })
-  msg.say('Captain, '+result);
+  //msg.say('Captain, '+result);
 })
 
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
