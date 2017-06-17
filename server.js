@@ -49,7 +49,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 
 slapp.message('flashevent_on', 'direct_mention', (msg)=> {
   msg.say('Storing status.')
-  kv.set("17", "FLAAASH", function (err) {
+  kv.set("17", "FLAAASH", (err) => {
      // check for err
     msg.say(err)
     msg.say(process.env.BEEPBOOP_PROJECT_ID)
