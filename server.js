@@ -124,9 +124,11 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 
 slapp.message('.*', 'mention', (msg) => {
   let dice = Math.random();
-  let answer = 'Goodbye.';
+  let answer = '';
   if (dice > 0.9) {
     answer='I\'ll be there for you. The captain said I had to.';
+  } else if (dice > 0.8) {
+    answer='There\'s a problem on the horizon: There is no horizon.';
   } else if (dice > 0.7) {
     answer='The captain says you\'re a friend. I will not kill you.';
   } else if (dice > 0.6) {
@@ -142,7 +144,7 @@ slapp.message('.*', 'mention', (msg) => {
   } else if (dice > 0.1) {
     answer='Quiet!  And there\'s a fresh one if you mouth off again.';
   } else {
-    answer='Goodbye.';
+    answer='I\'m capable of running my own diagnostics, thank you very much.';
   };
 
   msg.say({
