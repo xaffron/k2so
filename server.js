@@ -44,7 +44,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 
 slapp.message('flashevent_on', 'direct_mention', (msg)=> {
   msg.say('Storing status.')
-  kv.set(17, 'FLAAASH', function (err, val) {
+  kv.set('17', 'FLAAASH', function (err, val) {
      // check for err
      console.log('ERROR setting to kv');
   })
@@ -135,7 +135,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
       let hr = dt.getHours();
       let answer = 'Captain ' + uName + ':';
 //      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        tempFLASH=kv.get(17, function (err, val) {
+        tempFLASH=kv.get('17', function (err, val) {
           // check for err
           console.log('ERROR fetching from kv');
         })
