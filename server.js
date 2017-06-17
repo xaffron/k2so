@@ -11,7 +11,7 @@ const officers = ['U2A3YP9MH','eoa',-5,
                    'U2AFRRVL1','bluemoose',-5,
                    'U2A6642T1','yer.reklaw',-7]
 const OFFICERS_PRIVATE = 'G2B6KC10S'
-const SANDBOX = ''
+const SANDBOX = 'G2BHD8H0F'
 const BOT_REMINDERS = 'G5UJ1K5FT'
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
