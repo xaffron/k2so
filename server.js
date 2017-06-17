@@ -42,29 +42,13 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
 })
 
-slapp.message('flashevent', 'direct_mention', (msg)=> {
+slapp.message('flashevent_on', 'direct_mention', (msg)=> {
   msg.say('Storing status.')
-  msg.say({
-      text: '',
-      attachments: [
-        {
-          text: 'Is today a flash event day?',
-          fallback: '',
-          callback_id: 'flashevent_callback',
-          actions: [
-            { name: 'answer', text: 'Yes', type: 'button', value: 'yes' },
-            { name: 'answer', text: 'No',  type: 'button',  value: 'no' }
-          ]
-        }]
-      })
-  
+  kv.set(17, 'FLAAASH', function (err, val) {
+     // check for err
+     console.log('ERROR setting to kv');
+  })
 })
-
-slapp.action('flashevent_callback', 'answer', (msg, value) => {
-  msg.respond(msg.body.response_url, `${value} is a good choice!`)
-})
-//-----------------------------------
-
 
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
 slapp
