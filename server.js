@@ -57,14 +57,15 @@ slapp.message('flashevent_on', 'direct_mention', (msg)=> {
      msg.say('ERROR setting to kv');
      */
   })
-  //kv.get("17", function (err, val) {
+  let result = kv.get("17", (err, val)=> {
      // check for err
   //  msg.say(err)
   //  msg.say(val)
   //  msg.say(process.env.BEEPBOOP_PROJECT_ID)
   //  msg.say(process.env.BEEPBOOP_TOKEN)
   //   msg.say('ERROR getting from kv');
-  //})
+  })
+  msg.say('Captain, '+result);
 })
 
 // "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
