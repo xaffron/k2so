@@ -44,7 +44,7 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 
 slapp.message('flashevent_on', 'direct_mention', (msg)=> {
   msg.say('Storing status.')
-  kv.set('17', 'FLAAASH', function (err, val) {
+  kv.set('17', 'FLAAASH', function (err) {
      // check for err
      console.log('ERROR setting to kv');
   })
