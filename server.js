@@ -50,20 +50,21 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 slapp.message('flashevent_on', 'direct_mention', (msg)=> {
  kv.set('a key', 'the key, is water', function (err) {
   // handle error :)
-})
-  kv.get('a key', function (err, val) {
+ })
+ kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
-console.log(val);
-  })
-      kv.del('a key', function (err) {
+    console.log(val);
+ })
+/*      kv.del('a key', function (err) {
         // handle error :)
         // 'a key' should be deleted
       })
   kv.set("TESTEST", "FLAAASH", (err) => {
      // check for err
 msg.say(''+err)
-    /*
+*/
+/*
     
     msg.say(process.env.BEEPBOOP_PROJECT_ID)
     msg.say(process.env.BEEPBOOP_TOKEN)
