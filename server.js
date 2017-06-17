@@ -140,7 +140,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
           // check for err
           console.log('ERROR fetching from kv');
         })
-      }
+//      }
         answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
         msg.say({
           channel: SANDBOX,
