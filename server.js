@@ -54,12 +54,8 @@ slapp.message('flashevent_on', 'direct_mention', (msg)=> {
   kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
-
+console.log(val);
   })
-    kv.list(function (err, keys) {
-      // handle error :)
-      // keys should be ['a key']
-    })
       kv.del('a key', function (err) {
         // handle error :)
         // 'a key' should be deleted
@@ -74,6 +70,12 @@ msg.say(''+err)
      msg.say('ERROR setting to kv');
      */
   })
+      kv.list(function (err, keys) {
+      // handle error :)
+      // keys should be ['a key']
+      console.log(keys);
+    })
+
   let result = kv.get("TESTEST", (err, val)=> {
      // check for err
   //  msg.say(err)
