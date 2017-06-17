@@ -51,10 +51,18 @@ slapp.message('flashevent_on', 'direct_mention', (msg)=> {
   msg.say('Storing status.')
   kv.set("17", "FLAAASH", function (err) {
      // check for err
-    msg.say('RROR')
+    msg.say(err)
     msg.say(process.env.BEEPBOOP_PROJECT_ID)
     msg.say(process.env.BEEPBOOP_TOKEN)
      msg.say('ERROR setting to kv');
+  })
+  kv.get("17", function (err, val) {
+     // check for err
+    msg.say(err)
+    msg.say(val)
+    msg.say(process.env.BEEPBOOP_PROJECT_ID)
+    msg.say(process.env.BEEPBOOP_TOKEN)
+     msg.say('ERROR getting from kv');
   })
 })
 
