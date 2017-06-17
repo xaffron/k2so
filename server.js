@@ -4,7 +4,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
-const kv = require('beepboop-persist')()
+var kv = require('beepboop-persist')()
 const officers = ['U2A3YP9MH','eoa',-15,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
