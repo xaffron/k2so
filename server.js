@@ -5,7 +5,6 @@ const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 var kv = require('beepboop-persist')({
-  
   debug: true,
   provider: 'beepboop',
   project_id: process.env.BEEPBOOP_PROJECT_ID,
