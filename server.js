@@ -7,8 +7,9 @@ const Context = require('slapp-context-beepboop')
 var officers = ['U2A3YP9MH','eoa',-5,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
-                   'XXX','bluemoose',-4,
-                   'YYY','yer.reklaw',-7]
+                   'U2BB4L4HY','ajuntapaul',-5,
+                   'U2AFRRVL1','bluemoose',-5,
+                   'U2A6642T1','yer.reklaw',-7]
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
