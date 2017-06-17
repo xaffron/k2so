@@ -158,9 +158,9 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
       let offset = officers[i+2];
       let dt = new Date(Date.now()+3600000*offset);
       let hr = dt.getHours();
-      let answer = 'Captain ' + uName + ', it is ' + hr + '00 hours.';
+      let answer = 'Captain ' + uName + ':';
       if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        answer += '  This is only a drill.  If there were a flash event today, you would need to report to duty immediately.';
+        answer += '  This is only a drill.  But if there were a flash event today, you would need to report to duty immediately.';
         msg.say({
           channel: 'G2B6KC10S',
           link_names: true,
