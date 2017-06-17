@@ -8,8 +8,8 @@ var kv = require('beepboop-persist')({
   
   debug: true,
   provider: 'beepboop',
-  beepboop_project_id: process.env.BEEPBOOP_PROJECT_ID,
-  beepboop_token: process.env.BEEPBOOP_TOKEN
+  project_id: process.env.BEEPBOOP_PROJECT_ID,
+  token: process.env.BEEPBOOP_TOKEN
 })
 const officers = ['U2A3YP9MH','eoa',-15,
                    'U2B6M7MSR','schwefumbler',-4,
