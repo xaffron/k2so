@@ -4,7 +4,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
-const officers = ['U2A3YP9MH','eoa',-5,
+const officers = ['U2A3YP9MH','eoa',-15,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
                    'U2BB4L4HY','ajuntapaul',-5,
@@ -170,7 +170,7 @@ slapp.message('.*', ['direct_message', 'direct_mention', 'mention', 'ambient'], 
       if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
         tempFLASH='FLASH'
       }
-        answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(hour ' +hr+ '). '+tempFLASH;
+        answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
         msg.say({
           channel: SANDBOX,
           link_names: true,
