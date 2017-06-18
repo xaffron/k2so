@@ -61,10 +61,8 @@ slapp
   .message('enroll', 'direct_mention', (msg, text) => {
   msg.say('You are user ' + msg.body.event.user);
   let words = msg.body.event.text.split(' ');
-  for (let i=1;i<words.length; i++) {
-    msg.say(words[i]);
-  }
-
+  msg.say('Enrolling user @' + words[2] + ' (' + words[3].substring(2,11) +') at timezone UTC '+ words[4]);
+  
   /*
   msg.say({
         as_user: true,
