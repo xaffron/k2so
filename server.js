@@ -94,6 +94,7 @@ slapp
   kv.list(function (err, keys) {
     console.log(keys);
     for (let key in keys) {
+        console.log('Key: '+key);
         kv.get(key, function (err, val) {
           msg.say(key+': ' + val);
         })
