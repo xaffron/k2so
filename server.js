@@ -95,7 +95,7 @@ slapp
     for (let key in keys) {
         kv.get(key, function (err, val) {
           msg.say(key+': ' + val);
-        }
+        })
     }
   }
  })
