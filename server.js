@@ -1,24 +1,32 @@
 'use strict'
 
+//set up constants.
 const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
-var Tokenizer = require('tokenizer');
+
+// persistent storage:
+// 1 key for every user code storing their handles and swgoh-timezone
+// 1 key for every day of the week marking flash events
+
 var kv = require('beepboop-persist')({
-  provider: 'beepboop',
   project_id: process.env.BEEPBOOP_PROJECT_ID,
   token: process.env.BEEPBOOP_TOKEN
 })
+
+// constants for Slack test channels.
+const OFFICERS_PRIVATE = 'G2B6KC10S'
+const SANDBOX = 'G2BHD8H0F'
+const BOT_REMINDERS = 'G5UJ1K5FT'
+
+// list of officers.
 const officers = ['U2A3YP9MH','eoa',-15,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
                    'U2BB4L4HY','ajuntapaul',-5,
                    'U2AFRRVL1','bluemoose',-5,
                    'U2A6642T1','yer.reklaw',-7]
-const OFFICERS_PRIVATE = 'G2B6KC10S'
-const SANDBOX = 'G2BHD8H0F'
-const BOT_REMINDERS = 'G5UJ1K5FT'
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -30,6 +38,7 @@ var slapp = Slapp({
   context: Context()
 })
 
+//TODO:  Update help text.
 var HELP_TEXT = `
 I will respond to the following messages:
 \`help\` - to see this message.
@@ -47,52 +56,13 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
 })
 
-slapp.message('wipe', 'direct_mention', (msg)=> {
- kv.del('a key', function (err) {
-  // handle error :)
- })
- kv.get('a key', function (err, val) {
-    // handle error :)
-    // val should be 'the key, is water'
-    msg.say(val+' is the value after deletion');
- })
-})
-slapp.message('flashevent_status', 'direct_mention', (msg)=> {
- kv.get('a key', function (err, val) {
-    // handle error :)
-    // val should be 'the key, is water'
-    msg.say('Flash event is ' + val +' for today.');
- })
-})
-slapp.message('flashevent_on', 'direct_mention', (msg)=> {
- kv.set('a key', 'the key, is water', function (err) {
-  // living dangerously
- })
- kv.get('a key', function (err, val) {
-    // handle error :)
-    // val should be 'the key, is water'
-    msg.say(val);
- })
- kv.list(function (err, keys) {
-   // handle error :)
-   // keys should be ['a key']
-   console.log(keys);
- })
-
-  //let result = kv.get("TESTEST", (err, val)=> {
-     // check for err
-  //  msg.say(err)
-  //  msg.say(val)
-  //  msg.say(process.env.BEEPBOOP_PROJECT_ID)
-  //  msg.say(process.env.BEEPBOOP_TOKEN)
-  //   msg.say('ERROR getting from kv');
-  //msg.say('Captain, '+result);
-})
-
-// "Conversation" flow that tracks state - kicks off when user says hi, hello or hey
+// User enrolling.
 slapp
-  .message('enroll', ['direct_mention', 'direct_message'], (msg, text) => {
-    msg.say({
+  .message('enroll', 'direct_mention', (msg, text) => {
+  msg.say('You are user ' + msg.body.event.user);
+  msg.say(msg.body.event.text)
+/*
+  msg.say({
         as_user: true,
         text: 'Initiating enrollment sequence for user ' + msg.body.event.user
       })
@@ -134,7 +104,57 @@ slapp
       .say('Thanks for sharing.')
       .say(`Here's what you've told me so far: \`\`\`${JSON.stringify(state)}\`\`\``)
     // At this point, since we don't route anywhere, the "conversation" is over
-  })
+*/
+
+})
+
+
+
+/*
+slapp.message('wipe', 'direct_mention', (msg)=> {
+ kv.del('a key', function (err) {
+  // handle error :)
+ })
+ kv.get('a key', function (err, val) {
+    // handle error :)
+    // val should be 'the key, is water'
+    msg.say(val+' is the value after deletion');
+ })
+})
+*/
+slapp.message('flashevent on', 'direct_mention', (msg)=> {
+ 
+ kv.get('a key', function (err, val) {
+    // handle error :)
+    // val should be 'the key, is water'
+    msg.say('Flash event is ' + val +' for today.');
+ })
+})
+/*
+slapp.message('flashevent_on', 'direct_mention', (msg)=> {
+ kv.set('a key', 'the key, is water', function (err) {
+  // living dangerously
+ })
+ kv.get('a key', function (err, val) {
+    // handle error :)
+    // val should be 'the key, is water'
+    msg.say(val);
+ })
+ kv.list(function (err, keys) {
+   // handle error :)
+   // keys should be ['a key']
+   console.log(keys);
+ })
+*/
+  //let result = kv.get("TESTEST", (err, val)=> {
+     // check for err
+  //  msg.say(err)
+  //  msg.say(val)
+  //  msg.say(process.env.BEEPBOOP_PROJECT_ID)
+  //  msg.say(process.env.BEEPBOOP_TOKEN)
+  //   msg.say('ERROR getting from kv');
+  //msg.say('Captain, '+result);
+//})
 
 // Can use a regex as well
 slapp.message(/^(thanks|thank you)/i, ['mention', 'direct_message'], (msg) => {
