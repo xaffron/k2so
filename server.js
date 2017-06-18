@@ -21,7 +21,7 @@ const SANDBOX = 'G2BHD8H0F'
 const BOT_REMINDERS = 'G5UJ1K5FT'
 
 // list of officers.
-const officers = ['U2A3YP9MH','eoa',-15,
+const officers = ['U2A3YP9MH','eoa',-5,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
                    'U2BB4L4HY','ajuntapaul',-5,
@@ -147,6 +147,7 @@ slapp
           // living dangerously
         })
       } else if (command=='off') {
+        answer += command;
         kv.set(dow, false, function (err) {
           // living dangerously
         })
@@ -160,13 +161,6 @@ slapp
         text: answer
       });
     }
-  /*
-    msg.say('Enrolling user @' + words[3] + ' (' + words[2].substring(2,11) +') at timezone UTC '+ words[4] +
-          '.  If this was done in error, please use \'unenroll @username\' to remove.');
-    kv.set(words[2].substring(2,11), [words[3],words[4]], function (err) {
-       // living dangerously
-    }) */
-      
 })
 
 // Can use a regex as well
