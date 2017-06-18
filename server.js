@@ -259,7 +259,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 */
 
 slapp.message('.*', ['mention', 'direct_message'], (msg) => {
-  if (msg.body.event.user.isBot()) {
+  if (msg.isBot()) {
     console.log('STOP SELF');
     return;
   }
