@@ -140,11 +140,16 @@ slapp
       let hr = dt.getHours();
       let dow = dt.getDay();
       let answer = 'Captain ' + uName + ':' +
-          '  your SWGOH DOW is ' + dow + ' and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
+          '  your SWGOH DOW is ' + dow + '(Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
       if (command=='on') {
         answer += command;
+        kv.set(dow, true, function (err) {
+          // living dangerously
+        })
       } else if (command=='off') {
-        answer += command;
+        kv.set(dow, false, function (err) {
+          // living dangerously
+        })
       } else {
         answer = 'Invalid command.  Correct syntax is \'flashevent [on/off]';
       }
