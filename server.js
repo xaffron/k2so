@@ -5,7 +5,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
-const DEBUG=true
+const DEBUG=false
 
 // persistent storage:
 // 1 key for every user code storing their handles and swgoh-timezone
@@ -22,14 +22,14 @@ const SANDBOX = 'G2BHD8H0F'
 const BOT_REMINDERS = 'G5UJ1K5FT'
 
 // list of officers.
-/*const officers = ['U2A3YP9MH','eoa',-5,
+const officers = ['U2A3YP9MH','eoa',-5,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
                    'U2BB4L4HY','ajuntapaul',-5,
                    'U2AFRRVL1','bluemoose',-5,
                    'U2A6642T1','yer.reklaw',-7]
-*/
-const officers = ['U2A3YP9MH','eoa',-5]
+
+//const officers = ['U2A3YP9MH','eoa',-5]
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
