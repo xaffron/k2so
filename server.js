@@ -203,7 +203,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
       let hr = dt.getHours();
       let answer = 'Captain ' + uName + ':' +
           '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
-      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
+      //if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
         kv.get(dow, function (err, val) {
            if (val) {
              msg.say('TRUE');
@@ -213,7 +213,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
              tempFLASH='OFF.';
            }
         })
-      }
+      //}
       answer += tempFLASH;
       msg.say({
         channel: SANDBOX,
