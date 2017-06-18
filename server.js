@@ -56,6 +56,21 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
 })
 
+//  User unenrolling.
+slapp
+  .message('unenroll', 'direct_mention', (msg, text) => {
+  msg.say('You are user ' + msg.body.event.user);
+  let words = msg.body.event.text.split(' ');
+  if (words.length<2) {
+    msg.say('Invalid command.  Correct syntax is \'unenroll @user\', e.g. enroll @whopper');
+  } else {
+    msg.say('Unenrolling user ' + words[1] + ' (' + words[1].substring(2,11) + ').');
+    kv.del(words[1].substring(2,11), function (err) {
+       // living dangerously
+    })
+  }
+})
+
 // User enrolling.
 slapp
   .message('enroll', 'direct_mention', (msg, text) => {
@@ -67,21 +82,6 @@ slapp
     msg.say('Enrolling user @' + words[3] + ' (' + words[2].substring(2,11) +') at timezone UTC '+ words[4] +
           '.  If this was done in error, please use \'unenroll @username\' to remove.');
     kv.set(words[2].substring(2,11), [words[3],words[4]], function (err) {
-       // living dangerously
-    })
-  }
-})
-
-//  User unenrolling.
-slapp
-  .message('unenroll', 'direct_mention', (msg, text) => {
-  msg.say('You are user ' + msg.body.event.user);
-  let words = msg.body.event.text.split(' ');
-  if (words.length<2) {
-    msg.say('Invalid command.  Correct syntax is \'unenroll @user\', e.g. enroll @whopper');
-  } else {
-    msg.say('Unenrolling user ' + words[1] + ' (' + words[1].substring(2,11) + ').');
-    kv.del(words[1].substring(2,11), function (err) {
        // living dangerously
     })
   }
