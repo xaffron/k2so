@@ -4,6 +4,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
+var Tokenizer = require('tokenizer');
 var kv = require('beepboop-persist')({
   provider: 'beepboop',
   project_id: process.env.BEEPBOOP_PROJECT_ID,
