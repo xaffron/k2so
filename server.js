@@ -61,8 +61,15 @@ slapp
   .message('enroll', 'direct_mention', (msg, text) => {
   msg.say('You are user ' + msg.body.event.user);
   let words = msg.body.event.text.split(' ');
-  msg.say('Enrolling user @' + words[2] + ' (' + words[3].substring(2,11) +') at timezone UTC '+ words[4]);
-  
+  if (words.length<5) {
+    msg.say('Invalid command.  Correct syntax is \'enroll @user user timezone\', e.g. enroll @whopper whopper +5');
+  } else {
+    msg.say('Enrolling user @' + words[3] + ' (' + words[2].substring(2,11) +') at timezone UTC '+ words[4] +
+          '.  If this was done in error, please use \'unenroll @username\' to remove.');
+    kv.set(words[2].substring(2,11), [words[3],words[4]], function (err) {
+       // living dangerously
+    })
+  }
   /*
   msg.say({
         as_user: true,
