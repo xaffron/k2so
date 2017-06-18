@@ -110,7 +110,7 @@ slapp.message('wipe', 'direct_mention', (msg)=> {
     msg.say(val+' is the value after deletion');
  })
 })
-*/
+
 slapp.message('flashevent on', 'direct_mention', (msg)=> {
  
  kv.get('a key', function (err, val) {
