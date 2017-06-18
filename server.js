@@ -93,7 +93,7 @@ slapp
   msg.say('You are user ' + msg.body.event.user);
   kv.list(function (err, keys) {
     console.log(keys);
-    for (let key in keys) {
+    for (let key of keys) {
         console.log('Key: '+key);
         kv.get(key, function (err, val) {
           msg.say(key+': ' + val);
