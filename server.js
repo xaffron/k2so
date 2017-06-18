@@ -56,43 +56,27 @@ slapp.message('wipe', 'direct_mention', (msg)=> {
     msg.say(val+' is the value after deletion');
  })
 })
-slapp.message('flashevent_on', 'direct_mention', (msg)=> {
- kv.set('a key', 'the key, is water', function (err) {
-  // handle error :)
-   /*
+slapp.message('flashevent_status', 'direct_mention', (msg)=> {
  kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
-    console.log(val+'1');
+    msg.say('Flash event is ' + val +' for today.');
  })
- */
+})
+slapp.message('flashevent_on', 'direct_mention', (msg)=> {
+ kv.set('a key', 'the key, is water', function (err) {
+  // living dangerously
  })
  kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
     msg.say(val);
  })
-/*      kv.del('a key', function (err) {
-        // handle error :)
-        // 'a key' should be deleted
-      })
-  kv.set("TESTEST", "FLAAASH", (err) => {
-     // check for err
-msg.say(''+err)
-*/
-/*
-    
-    msg.say(process.env.BEEPBOOP_PROJECT_ID)
-    msg.say(process.env.BEEPBOOP_TOKEN)
-     msg.say('ERROR setting to kv');
-     */
-  //})
-      kv.list(function (err, keys) {
-      // handle error :)
-      // keys should be ['a key']
-      console.log(keys);
-    })
-//  })
+ kv.list(function (err, keys) {
+   // handle error :)
+   // keys should be ['a key']
+   console.log(keys);
+ })
 
   //let result = kv.get("TESTEST", (err, val)=> {
      // check for err
