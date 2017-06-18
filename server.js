@@ -21,12 +21,14 @@ const SANDBOX = 'G2BHD8H0F'
 const BOT_REMINDERS = 'G5UJ1K5FT'
 
 // list of officers.
-const officers = ['U2A3YP9MH','eoa',-5,
+/*const officers = ['U2A3YP9MH','eoa',-5,
                    'U2B6M7MSR','schwefumbler',-4,
                    'U4FA4LE5N','alphonsis',-7,
                    'U2BB4L4HY','ajuntapaul',-5,
                    'U2AFRRVL1','bluemoose',-5,
                    'U2A6642T1','yer.reklaw',-7]
+*/
+const officers = ['U2A3YP9MH','eoa',-5]
 
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
@@ -190,32 +192,34 @@ slapp.message('attachment', ['mention', 'direct_message'], (msg) => {
 })
 
 slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
-  //if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf("chime")>=0) {
-    //for (let i=0;i<officers.length;i+=3) {
-    var i=0;
+  if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf("chime")>=0) {
+    for (let i=0;i<officers.length;i+=3) {
       let tempFLASH='';
       let usrID = officers[i];
       let uName = '@'+ officers[i+1];
       let offset = officers[i+2];
       let dt = new Date(Date.now()+3600000*offset);
+      let dow = dt.getDay();
       let hr = dt.getHours();
       let answer = 'Captain ' + uName + ':';
-//      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        tempFLASH=kv.get('17', function (err, val) {
-          // check for err
-          console.log('ERROR fetching from kv');
+      if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
+        tempFLASH=kv.get(dow, function (err, val) {
+           if (val) {
+             msg.say('TRUE')
+           } else {
+             msg.say('FALSE')
+           }
         })
-//      }
-        answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
-        msg.say({
-          channel: SANDBOX,
-          link_names: true,
-          as_user: true,
-          text: answer
-        });
-      //}
-    //}
-  //}
+      }
+      answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
+      msg.say({
+        channel: SANDBOX,
+        link_names: true,
+        as_user: true,
+        text: answer
+      });
+    }
+  }
 })
 
 // Catch-all for any other responses not handled above
