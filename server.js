@@ -259,6 +259,10 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 */
 
 slapp.message('.*', ['mention', 'direct_message'], (msg) => {
+  if (msg.body.event.user.isBot()) {
+    console.log('STOP SELF');
+    break;
+  }
   let dice = Math.random();
   let answer = '';
   if (dice > 0.9) {
