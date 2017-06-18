@@ -5,6 +5,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
+const DEBUG=true
 
 // persistent storage:
 // 1 key for every user code storing their handles and swgoh-timezone
@@ -201,22 +202,38 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
       let dt = new Date(Date.now()+3600000*offset);
       let dow = dt.getDay();
       let hr = dt.getHours();
-      let answer = 'Captain ' + uName + ':' +
-          '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
-      //if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        kv.get(dow, function (err, val) {
-           if (val) {
-             tempFLASH='ON.';
-           }
-        })
-      //}
-      answer += tempFLASH;
-      msg.say({
-        channel: SANDBOX,
-        link_names: true,
-        as_user: true,
-        text: answer
-      });
+      let answer = '';
+      kv.get(dow, function (err, val) {
+
+        if (val) {
+          tempFLASH='ON.';
+        }
+
+        if (DEBUG) {
+          answer = 'Captain ' + uName + ':' +
+            '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ' + tempFLASH;;
+          msg.say({
+            channel: SANDBOX,
+            link_names: true,
+            as_user: true,
+            text: answer
+          });
+        }
+        
+        if (val) {
+//          if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
+            answer = 'Captain ' + uName + ':' +
+              'Flash Event is active.  There is a 97.6% chance of failure if you ignore me.';
+            msg.say({
+              channel: SANDBOX,
+              link_names: true,
+              as_user: true,
+              text: answer
+            });   
+//          }
+        }
+        
+      })
     }
   }
 })
