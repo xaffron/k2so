@@ -92,6 +92,7 @@ slapp
   .message('list', 'direct_mention', (msg, text) => {
   msg.say('You are user ' + msg.body.event.user);
   kv.list(function (err, keys) {
+    msg.say(keys);
     for (let key in keys) {
         kv.get(key, function (err, val) {
           msg.say(key+': ' + val);
