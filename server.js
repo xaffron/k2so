@@ -121,22 +121,47 @@ slapp
 slapp
   .message('flashevent', 'direct_mention', (msg)=> {
   let words = msg.body.event.text.split(' ');
+  let command ='';
   if (words.length<3) {
     msg.say('Invalid command.  Correct syntax is \'flashevent [on/off]');
   } else if (words[2]=='on') {
-    msg.say('ON');
+    command='on';
   } else if (words[2]=='off'){
-    msg.say ('OFF');
+    command='off';
   } else {
     msg.say('Invalid command.  Correct syntax is \'flashevent [on/off]');
   }
-    /*
+    for (let i=0;i<officers.length;i+=3) {
+      let usrID = officers[i];
+      if (msg.body.event.user!=usrID) continue;
+      let uName = '@'+ officers[i+1];
+      let offset = officers[i+2];
+      let dt = new Date(Date.now()+3600000*offset);
+      let hr = dt.getHours();
+      let dow = dt.getDay();
+      let answer = 'Captain ' + uName + ':' +
+          '  your SWGOH DOW is ' + dow + ' and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
+      if (command=='on') {
+        answer += command;
+      } else if (command=='off') {
+        answer += command;
+      } else {
+        answer = Invalid command.  Correct syntax is \'flashevent [on/off]';
+      }
+      msg.say({
+        channel: SANDBOX,
+        link_names: true,
+        as_user: true,
+        text: answer
+      });
+    }
+  /*
     msg.say('Enrolling user @' + words[3] + ' (' + words[2].substring(2,11) +') at timezone UTC '+ words[4] +
           '.  If this was done in error, please use \'unenroll @username\' to remove.');
     kv.set(words[2].substring(2,11), [words[3],words[4]], function (err) {
        // living dangerously
-    })
-    */
+    }) */
+      
 })
 
 // Can use a regex as well
