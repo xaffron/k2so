@@ -80,7 +80,7 @@ slapp
   if (words.length<2) {
     msg.say('Invalid command.  Correct syntax is \'unenroll @user\', e.g. enroll @whopper');
   } else {
-    msg.say('Unenrolling user '+ words[1] + (' + words[1].substring(2,11) + '.');
+    msg.say('Unenrolling user ' + words[1] + ' (' + words[1].substring(2,11) + ').');
     kv.del(words[1].substring(2,11), function (err) {
        // living dangerously
     })
