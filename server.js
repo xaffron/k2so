@@ -260,7 +260,7 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 
 slapp.message('.*', ['mention', 'direct_message'], (msg) => {
   if (msg.isBot()) {
-    console.log('STOP SELF');
+    console.log('STOP SELF ' + msg.user);
     return;
   }
   let dice = Math.random();
