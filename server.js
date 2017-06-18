@@ -23,13 +23,16 @@ const BOT_REMINDERS = 'G5UJ1K5FT'
 const GAME_EVENTS = 'C55NYKC10'
 
 // list of officers.
-const officers = ['U2A3YP9MH','eoa',-5,
-                   'U2B6M7MSR','schwefumbler',-4,
-                   'U4FA4LE5N','alphonsis',-7,
-                   'U2BB4L4HY','ajuntapaul',-5,
-                   'U2AFRRVL1','bluemoose',-5,
-                   'U2A6642T1','yer.reklaw',-7,
-                   'U4U5MRWGJ','blackvseries',4]
+const officers = [
+  'U2A3YP9MH','eoa',-5,
+  'U2B6M7MSR','schwefumbler',-4,
+  'U4FA4LE5N','alphonsis',-7,
+  'U2BB4L4HY','ajuntapaul',-5,
+  'U2AFRRVL1','bluemoose',-5,
+  'U2A6642T1','yer.reklaw',-7,
+  'U4U5MRWGJ','blackvseries',4,
+  'U2AKRH076','tanga',-4
+                 ]
 
 //const officers = ['U2A3YP9MH','eoa',-5]
 
