@@ -20,7 +20,7 @@ var kv = require('beepboop-persist')({
 const OFFICERS_PRIVATE = 'G2B6KC10S'
 const SANDBOX = 'G2BHD8H0F'
 const BOT_REMINDERS = 'G5UJ1K5FT'
-const GAME_EVENTS = 'C2A5L6HCM'
+const GAME_EVENTS = 'C55NYKC10'
 
 // list of officers.
 const officers = ['U2A3YP9MH','eoa',-5,
