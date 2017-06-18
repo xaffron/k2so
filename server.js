@@ -137,7 +137,6 @@ slapp
        // living dangerously
     })
     */
-  } 
 })
 
 // Can use a regex as well
