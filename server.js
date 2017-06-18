@@ -60,8 +60,12 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 slapp
   .message('enroll', 'direct_mention', (msg, text) => {
   msg.say('You are user ' + msg.body.event.user);
-  msg.say(msg.body.event.text)
-/*
+  let words = msg.body.event.text.split(' ');
+  for (let word of words) {
+    msg.say(word);
+  }
+
+  /*
   msg.say({
         as_user: true,
         text: 'Initiating enrollment sequence for user ' + msg.body.event.user
