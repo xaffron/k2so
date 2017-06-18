@@ -142,7 +142,7 @@ slapp
       let hr = dt.getHours();
       let dow = dt.getDay();
       let answer = 'Captain ' + uName + ':' +
-          '  your SWGOH DOW is ' + dow + '(Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
+          '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
       if (command=='on') {
         answer += command;
         kv.set(dow, true, function (err) {
@@ -201,17 +201,20 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
       let dt = new Date(Date.now()+3600000*offset);
       let dow = dt.getDay();
       let hr = dt.getHours();
-      let answer = 'Captain ' + uName + ':';
+      let answer = 'Captain ' + uName + ':' +
+          '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ';
       if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-        tempFLASH=kv.get(dow, function (err, val) {
+        kv.get(dow, function (err, val) {
            if (val) {
-             msg.say('TRUE')
+             msg.say('TRUE');
+             tempFLASH='ON.';
            } else {
              msg.say('FALSE')
+             tempFLASH='OFF.';
            }
         })
       }
-      answer += '  your SWGOH date/time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). '+tempFLASH;
+      answer += tempFLASH;
       msg.say({
         channel: SANDBOX,
         link_names: true,
