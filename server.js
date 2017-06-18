@@ -20,6 +20,7 @@ var kv = require('beepboop-persist')({
 const OFFICERS_PRIVATE = 'G2B6KC10S'
 const SANDBOX = 'G2BHD8H0F'
 const BOT_REMINDERS = 'G5UJ1K5FT'
+const GAME_EVENTS = 'C2A5L6HCM'
 
 // list of officers.
 const officers = ['U2A3YP9MH','eoa',-5,
@@ -222,9 +223,9 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
         if (val) {
           if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
             answer = uName + ':' +
-              'Flash Event is active.  There is a 97.6% chance of failure if you ignore me.';
+              'There is a 97.6% chance of failure, but your Flash Event is active now.';
             msg.say({
-              channel: OFFICERS_PRIVATE,
+              channel: GAME_EVENTS,
               link_names: true,
               as_user: true,
               text: answer
