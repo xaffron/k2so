@@ -62,7 +62,7 @@ slapp
   msg.say('You are user ' + msg.body.event.user);
   let words = msg.body.event.text.split(' ');
   for (let i=1;i<words.length; i++) {
-    msg.say(word);
+    msg.say(words[i]);
   }
 
   /*
