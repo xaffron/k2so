@@ -204,7 +204,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
       let hr = dt.getHours();
       let answer = '';
       kv.get(dow, function (err, val) {
-
+        console.log(val);
         if (val) {
           tempFLASH='ON.';
         }
