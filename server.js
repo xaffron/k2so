@@ -52,8 +52,13 @@ slapp.message('flashevent_on', 'direct_mention', (msg)=> {
  kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
-    console.log(val);
+    console.log(val+'1');
  })
+ })
+ kv.get('a key', function (err, val) {
+    // handle error :)
+    // val should be 'the key, is water'
+    console.log(val);
  })
 /*      kv.del('a key', function (err) {
         // handle error :)
