@@ -61,7 +61,7 @@ slapp
   .message('enroll', 'direct_mention', (msg, text) => {
   msg.say('You are user ' + msg.body.event.user);
   let words = msg.body.event.text.split(' ');
-  for (let word of words) {
+  for (let i=1;i<words.length; i++) {
     msg.say(word);
   }
 
