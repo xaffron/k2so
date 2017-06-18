@@ -46,19 +46,31 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
 })
 
+slapp.message('wipe', 'direct_mention', (msg)=> {
+ kv.del('a key', function (err) {
+  // handle error :)
+ })
+ kv.get('a key', function (err, val) {
+    // handle error :)
+    // val should be 'the key, is water'
+    msg.say(val+' is the value after deletion');
+ })
+})
 slapp.message('flashevent_on', 'direct_mention', (msg)=> {
  kv.set('a key', 'the key, is water', function (err) {
   // handle error :)
+   /*
  kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
     console.log(val+'1');
  })
+ */
  })
  kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
-    console.log(val);
+    msg.say(val);
  })
 /*      kv.del('a key', function (err) {
         // handle error :)
