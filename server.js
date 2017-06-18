@@ -114,45 +114,31 @@ slapp
     kv.del(words[2], function (err) {
        // living dangerously
     })
-    kv.del('a key', function (err) {
-       // living dangerously
-    })
   }
 })
 
-slapp.message('flashevent on', 'direct_mention', (msg)=> {
- 
- kv.get('a key', function (err, val) {
-    // handle error :)
-    // val should be 'the key, is water'
-    msg.say('Flash event is ' + val +' for today.');
- })
+//  Flash Event Flag.
+slapp
+  .message('flashevent', 'direct_mention', (msg)=> {
+  let words = msg.body.event.text.split(' ');
+  if (words.length<3) {
+    msg.say('Invalid command.  Correct syntax is \'flashevent [on/off]');
+  } else if (words[2]=='on') {
+    msg.say('ON');
+  } else if (words[2]=='off'){
+    msg.say ('OFF');
+  } else {
+    msg.say('Invalid command.  Correct syntax is \'flashevent [on/off]');
+  }
+    /*
+    msg.say('Enrolling user @' + words[3] + ' (' + words[2].substring(2,11) +') at timezone UTC '+ words[4] +
+          '.  If this was done in error, please use \'unenroll @username\' to remove.');
+    kv.set(words[2].substring(2,11), [words[3],words[4]], function (err) {
+       // living dangerously
+    })
+    */
+  } 
 })
-/*
-slapp.message('flashevent_on', 'direct_mention', (msg)=> {
- kv.set('a key', 'the key, is water', function (err) {
-  // living dangerously
- })
- kv.get('a key', function (err, val) {
-    // handle error :)
-    // val should be 'the key, is water'
-    msg.say(val);
- })
- kv.list(function (err, keys) {
-   // handle error :)
-   // keys should be ['a key']
-   console.log(keys);
- })
-*/
-  //let result = kv.get("TESTEST", (err, val)=> {
-     // check for err
-  //  msg.say(err)
-  //  msg.say(val)
-  //  msg.say(process.env.BEEPBOOP_PROJECT_ID)
-  //  msg.say(process.env.BEEPBOOP_TOKEN)
-  //   msg.say('ERROR getting from kv');
-  //msg.say('Captain, '+result);
-//})
 
 // Can use a regex as well
 slapp.message(/^(thanks|thank you)/i, ['mention', 'direct_message'], (msg) => {
