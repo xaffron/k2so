@@ -61,7 +61,13 @@ I will respond to the following messages:
 
 // response to the user typing "help"
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
-  msg.say(HELP_TEXT)
+ // msg.say(HELP_TEXT)
+  msg.say({
+    channel: 'U2A3YP9MH',
+    link_names: true,
+    as_user: true,
+    text: 'testme'
+  })  
 })
 
 //  User unenrolling.
