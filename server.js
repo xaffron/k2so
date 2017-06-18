@@ -158,7 +158,6 @@ slapp
         answer = 'Invalid command.  Correct syntax is \'flashevent [on/off]';
       }
       msg.say({
-        channel: SANDBOX,
         link_names: true,
         as_user: true,
         text: answer
@@ -210,7 +209,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
         }
 
         if (DEBUG) {
-          answer = 'Captain ' + uName + ':' +
+          answer = uName + ':' +
             '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ' + tempFLASH;;
           msg.say({
             channel: SANDBOX,
@@ -221,16 +220,16 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
         }
         
         if (val) {
-//          if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-            answer = 'Captain ' + uName + ':' +
+          if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
+            answer = uName + ':' +
               'Flash Event is active.  There is a 97.6% chance of failure if you ignore me.';
             msg.say({
-              channel: SANDBOX,
+              channel: OFFICERS_PRIVATE,
               link_names: true,
               as_user: true,
               text: answer
             });   
-//          }
+          }
         }
         
       })
