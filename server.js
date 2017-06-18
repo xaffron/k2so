@@ -61,13 +61,7 @@ I will respond to the following messages:
 
 // response to the user typing "help"
 slapp.message('help', ['mention', 'direct_message'], (msg) => {
- // msg.say(HELP_TEXT)
-  msg.say({
-    channel: 'U2A3YP9MH',
-    link_names: true,
-    as_user: true,
-    text: 'testme'
-  })  
+  msg.say(HELP_TEXT)
 })
 
 //  User unenrolling.
@@ -235,7 +229,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
             answer = uName + ':' +
               'There is a 97.6% chance of failure, but your Flash Event is active now.';
             msg.say({
-              channel: GAME_EVENTS,
+              channel: usrID,
               link_names: true,
               as_user: true,
               text: answer
@@ -259,8 +253,8 @@ slapp.message('.*', ['direct_mention', 'direct_message'], (msg) => {
 */
 
 slapp.message('.*', ['mention', 'direct_message'], (msg) => {
+  // Prevent feedback loops in direct messages
   if (msg.isBot()) {
-    console.log('STOP SELF ' + msg.user);
     return;
   }
   let dice = Math.random();
