@@ -5,7 +5,7 @@ const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
-const DEBUG=false
+const DEBUG=true
 
 // persistent storage:
 // 1 key for every user code storing their handles and swgoh-timezone
@@ -28,7 +28,8 @@ const officers = ['U2A3YP9MH','eoa',-5,
                    'U4FA4LE5N','alphonsis',-7,
                    'U2BB4L4HY','ajuntapaul',-5,
                    'U2AFRRVL1','bluemoose',-5,
-                   'U2A6642T1','yer.reklaw',-7]
+                   'U2A6642T1','yer.reklaw',-7,
+                   'U4U5MRWGJ','blackvseries',4]
 
 //const officers = ['U2A3YP9MH','eoa',-5]
 
