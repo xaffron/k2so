@@ -97,7 +97,7 @@ slapp
           msg.say(key+': ' + val);
         })
     }
-  }
+  })
  })
 
 slapp.message('wipe', 'direct_mention', (msg)=> {
