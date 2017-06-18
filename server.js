@@ -146,7 +146,7 @@ slapp
       } else if (command=='off') {
         answer += command;
       } else {
-        answer = Invalid command.  Correct syntax is \'flashevent [on/off]';
+        answer = 'Invalid command.  Correct syntax is \'flashevent [on/off]';
       }
       msg.say({
         channel: SANDBOX,
