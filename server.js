@@ -212,7 +212,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
 
         if (DEBUG) {
           answer = uName + ':' +
-            '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Flash Event is now ' + tempFLASH;;
+            '  your SWGOH DOW is ' + dow + ' (Sunday is 0) and your time is ' +dt.toLocaleString()+ '(day '+ dt.getDate() +' hour ' +hr+ '). Today\'s Flash Event is ' + tempFLASH;;
           msg.say({
             channel: SANDBOX,
             link_names: true,
