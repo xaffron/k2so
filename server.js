@@ -194,7 +194,7 @@ slapp.message('attachment', ['mention', 'direct_message'], (msg) => {
 slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
   if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf("chime")>=0) {
     for (let i=0;i<officers.length;i+=3) {
-      let tempFLASH='';
+      let tempFLASH='OFF.';
       let usrID = officers[i];
       let uName = '@'+ officers[i+1];
       let offset = officers[i+2];
@@ -206,11 +206,7 @@ slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'
       //if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
         kv.get(dow, function (err, val) {
            if (val) {
-             msg.say('TRUE');
              tempFLASH='ON.';
-           } else {
-             msg.say('FALSE')
-             tempFLASH='OFF.';
            }
         })
       //}
