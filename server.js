@@ -114,6 +114,9 @@ slapp
     kv.del(words[2], function (err) {
        // living dangerously
     })
+    kv.del('a key', function (err) {
+       // living dangerously
+    })
   }
 })
 
