@@ -5,7 +5,6 @@ const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 var kv = require('beepboop-persist')({
-  debug: true,
   provider: 'beepboop',
   project_id: process.env.BEEPBOOP_PROJECT_ID,
   token: process.env.BEEPBOOP_TOKEN
@@ -50,11 +49,11 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
 slapp.message('flashevent_on', 'direct_mention', (msg)=> {
  kv.set('a key', 'the key, is water', function (err) {
   // handle error :)
- })
  kv.get('a key', function (err, val) {
     // handle error :)
     // val should be 'the key, is water'
     console.log(val);
+ })
  })
 /*      kv.del('a key', function (err) {
         // handle error :)
