@@ -70,56 +70,35 @@ slapp
        // living dangerously
     })
   }
-  /*
-  msg.say({
-        as_user: true,
-        text: 'Initiating enrollment sequence for user ' + msg.body.event.user
-      })
-      // sends next event from user to this route, passing along state
-      .route('how-are-you', { greeting: text })
-  })
-  .route('how-are-you', (msg, state) => {
-    var text = (msg.body.event && msg.body.event.text) || ''
-
-    // user may not have typed text as their next action, ask again and re-route
-    if (!text) {
-      return msg
-        .say("Whoops, I'm still waiting to hear how you're doing.")
-        .say('How are you?')
-        .route('how-are-you', state)
-    }
-
-    // add their response to state
-    state.status = text
-
-    msg
-      .say(`Ok then. What's your favorite color?`)
-      .route('color', state)
-  })
-  .route('color', (msg, state) => {
-    var text = (msg.body.event && msg.body.event.text) || ''
-
-    // user may not have typed text as their next action, ask again and re-route
-    if (!text) {
-      return msg
-        .say("I'm eagerly awaiting to hear your favorite color.")
-        .route('color', state)
-    }
-
-    // add their response to state
-    state.color = text
-
-    msg
-      .say('Thanks for sharing.')
-      .say(`Here's what you've told me so far: \`\`\`${JSON.stringify(state)}\`\`\``)
-    // At this point, since we don't route anywhere, the "conversation" is over
-*/
-
 })
 
+//  User unenrolling.
+slapp
+  .message('unenroll', 'direct_mention', (msg, text) => {
+  msg.say('You are user ' + msg.body.event.user);
+  let words = msg.body.event.text.split(' ');
+  if (words.length<2) {
+    msg.say('Invalid command.  Correct syntax is \'unenroll @user\', e.g. enroll @whopper');
+  } else {
+    msg.say('Unenrolling user '+ words[1] + (' + words[1].substring(2,11) + '.');
+    kv.del(words[1].substring(2,11), function (err) {
+       // living dangerously
+    })
+  }
+})
 
+//  KV listing.
+slapp
+  .message('list', 'direct_mention', (msg, text) => {
+  msg.say('You are user ' + msg.body.event.user);
+  kv.list(function (err, keys) {
+    for (let key in keys) {
+        kv.get(key, function (err, val) {
+          msg.say(key+': ' + val);
+        }
+    }
+ })
 
-/*
 slapp.message('wipe', 'direct_mention', (msg)=> {
  kv.del('a key', function (err) {
   // handle error :)
