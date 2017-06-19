@@ -1,20 +1,17 @@
 'use strict'
 
+// K2SO: Snarky droid/bot for SWGOH flash event notifications.
+// This bot listens on a certain channel for a Slack reminder with a certain keyword,
+// then iterates through a list of enrolled members, adjusts for their registered timezones,
+// and sends PM reminders at fixed hours of the day.
+
 //set up constants.
 const express = require('express')
 const Slapp = require('slapp')
 const ConvoStore = require('slapp-convo-beepboop')
 const Context = require('slapp-context-beepboop')
 const DEBUG=true
-
-// persistent storage:
-// 1 key for every user code storing their handles and swgoh-timezone
-// 1 key for every day of the week marking flash events
-
-var kv = require('beepboop-persist')({
-  project_id: process.env.BEEPBOOP_PROJECT_ID,
-  token: process.env.BEEPBOOP_TOKEN
-})
+const CHIME_KEYWORD = 'chime'
 
 // constants for Slack test channels.
 const OFFICERS_PRIVATE = 'G2B6KC10S'
@@ -36,6 +33,15 @@ const officers = [
 
 //const officers = ['U2A3YP9MH','eoa',-5]
 
+// persistent storage:
+// 1 key for every user code storing their handles and swgoh-timezone
+// 1 key for every day of the week marking flash events
+
+var kv = require('beepboop-persist')({
+  project_id: process.env.BEEPBOOP_PROJECT_ID,
+  token: process.env.BEEPBOOP_TOKEN
+})
+
 // use `PORT` env var on Beep Boop - default to 3000 locally
 var port = process.env.PORT || 3000
 
@@ -50,9 +56,14 @@ var slapp = Slapp({
 var HELP_TEXT = `
 I will respond to the following messages:
 \`help\` - to see this message.
-\`enroll\` - to, well, enroll.
+\`enroll\` - to enroll a member for notifications (not yet functional).
+\`unenroll\` - to unenroll a member (not yet functional).
+\`flashevent\` - to toggle my flash event notifications for today.
+\`list\` - to list my weekly schedule and enrolled members.
+\`forceflashevent\` - to toggle flash events for another weekday.
+\`rawerase\` - to erase corrupt or garbage entries.
 \`thanks\` - to demonstrate a simple response.
-\`<type-any-other-text>\` - to demonstrate a random emoticon response, some of the time :wink:.
+\`<type-any-other-text>\` - to get a random comment from me.
 \`attachment\` - to see a Slack attachment message.
 `
 //*********************************************
@@ -133,7 +144,7 @@ slapp
     msg.say('Invalid command.  Correct syntax is \'forceflashevent 0|1|2|3|4|5|6\', e.g. forceflashevent 3');
   } else {
     msg.say('Forced Flash Event on for day ' + words[2] + ' of week.');
-    kv.del(words[2], function (err) {
+    kv.set(words[2], true, function (err) {
        // living dangerously
     })
   }
@@ -210,8 +221,8 @@ slapp.message('attachment', ['mention', 'direct_message'], (msg) => {
   })
 })
 
-slapp.message('chime', ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
-  if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf("chime")>=0) {
+slapp.message(CHIME_KEYWORD, ['direct_message', 'direct_mention', 'mention', 'ambient'], (msg) => {
+  if (msg.body.event.channel==BOT_REMINDERS && msg.body.event.text.indexOf(CHIME_KEYWORD)>=0) {
     for (let i=0;i<officers.length;i+=3) {
       let tempFLASH='OFF.';
       let usrID = officers[i];
