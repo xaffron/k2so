@@ -112,7 +112,7 @@ slapp
 
 //  Entry erasing.
 slapp
-  .message('erase', 'direct_mention', (msg, text) => {
+  .message('rawerase', 'direct_mention', (msg, text) => {
   msg.say('You are user ' + msg.body.event.user);
   let words = msg.body.event.text.split(' ');
   if (words.length<3) {
@@ -125,19 +125,33 @@ slapp
   }
 })
 
+//  Entry erasing.
+slapp
+  .message('forceflashevent', 'direct_mention', (msg, text) => {
+  let words = msg.body.event.text.split(' ');
+  if (words.length<3) {
+    msg.say('Invalid command.  Correct syntax is \'forceflashevent 0|1|2|3|4|5|6\', e.g. forceflashevent 3');
+  } else {
+    msg.say('Forced Flash Event on for day ' + words[2] + ' of week.');
+    kv.del(words[2], function (err) {
+       // living dangerously
+    })
+  }
+})
+
 //  Flash Event Flag.
 slapp
   .message('flashevent', 'direct_mention', (msg)=> {
   let words = msg.body.event.text.split(' ');
   let command ='';
   if (words.length<3) {
-    msg.say('Invalid command.  Correct syntax is \'flashevent [on/off]');
+    msg.say('Invalid command.  Correct syntax is \'flashevent on|off');
   } else if (words[2]=='on') {
     command='on';
   } else if (words[2]=='off'){
     command='off';
   } else {
-    msg.say('Invalid command.  Correct syntax is \'flashevent [on/off]');
+    msg.say('Invalid command.  Correct syntax is \'flashevent on|off');
   }
     for (let i=0;i<officers.length;i+=3) {
       let usrID = officers[i];
@@ -160,7 +174,7 @@ slapp
           // living dangerously
         })
       } else {
-        answer = 'Invalid command.  Correct syntax is \'flashevent [on/off]';
+        answer = 'Invalid command.  Correct syntax is \'flashevent on|off';
       }
       msg.say({
         link_names: true,
