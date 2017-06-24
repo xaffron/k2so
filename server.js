@@ -32,6 +32,7 @@ const officers = [
   'U2AC1PF29','jonosmol',-6,
   'U4V71QBN2','humy',4,
   'U2PV0FRM1','walkingdeadmann',-6,
+  'U509E4CF9','joucii',3,
   'U2B697UFQ','hazqrd',-4
                  ]
 
