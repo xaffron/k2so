@@ -34,7 +34,8 @@ const officers = [
   'U2PV0FRM1','walkingdeadmann',-6,
   'U509E4CF9','joucii',3,
   'U58E503HV','ewokfam',1,
-  'U2B697UFQ','hazqrd',-4
+  'U2B697UFQ','hazqrd',-4,
+  'U6ATMTSGH','scruffylookinghersh',-4
                  ]
 
 //const officers = ['U2A3YP9MH','eoa',-5]
