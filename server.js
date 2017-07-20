@@ -290,24 +290,44 @@ slapp.message('.*', ['mention', 'direct_message'], (msg) => {
   }
   let dice = Math.random();
   let answer = '';
-  if (dice > 0.9) {
+  if (dice > 0.95) {
     answer='I\'ll be there for you. The captain said I had to.';
-  } else if (dice > 0.8) {
+  } else if (dice > 0.9) {
     answer='There\'s a problem on the horizon: There is no horizon.';
+  } else if (dice > 0.85) {
+    answer='That is a bad idea.  I think so, and so does Cassian. What do I know?  My specialty is just strategic analysis.';
+  } else if (dice > 0.8) {
+    answer='Doesn\'t sound so bad to me.';
+  } else if (dice > 0.75) {
+    answer='Not me... I can survive in space.';
   } else if (dice > 0.7) {
-    answer='The captain says you\'re a friend. I will not kill you.';
+    answer='Did you know that wasn\'t me?';
+  } else if (dice > 0.65) {
+    answer='I\'ve got a bad feeling about…';
   } else if (dice > 0.6) {
-    answer='There were a lot of explosions for two people blending in.';
+    answer='Your behavior is continually unexpected.';
+  } else if (dice > 0.55) {
+    answer='You are being reminded. Please do not resist.';
   } else if (dice > 0.5) {
-    answer='Congratulations, you\'re being rescued.';
+    answer='I can blend in. I\'m an Imperial droid.';
+  } else if (dice > 0.45) {
+    answer='The captain says you\'re a friend. I will not kill you.';
   } else if (dice > 0.4) {
-    answer='I’d really rather not. The odds of the Coruscant Underworld Police showing up are one in 93 million.';
+    answer='There were a lot of explosions for two people blending in.';
+  } else if (dice > 0.35) {
+    answer='Congratulations, you\'re being rescued.';
   } else if (dice > 0.3) {
+    answer='I’d really rather not. The odds of the Coruscant Underworld Police showing up are one in 93 million.';
+  } else if (dice > 0.25) {
     answer='I find that answer vague and unconvincing.';
   } else if (dice > 0.2) {
     answer='I\'m not very optimistic about our odds.';
-  } else if (dice > 0.1) {
+  } else if (dice > 0.15) {
     answer='Quiet!  And there\'s a fresh one if you mouth off again.';
+  } else if (dice > 0.1) {
+    answer='There you are. I\'m standing by as you requested.';
+  } else if (dice > 0.05) {
+    answer='Would you like to know the probablility of not getting the gear you want? It\'s high. It\'s very high.';
   } else {
     answer='I\'m capable of running my own diagnostics, thank you very much.';
   };
