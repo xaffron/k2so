@@ -258,8 +258,17 @@ slapp.message(CHIME_KEYWORD, ['direct_message', 'direct_mention', 'mention', 'am
         
         if (val) {
           if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
-            answer = uName + ':' +
-              'There is a 97.6% chance of failure, but your Flash Event is active now.';
+            let dice = Math.random();
+            if (dice > 0.75) {
+              answer = uName + ':' + 'Your Flash Event is active now. I\'ve got a bad feeling about…';
+            } else if (dice > 0.5) {
+              answer = uName + ':' + 'Your Flash Event is active now. I\'m not very optimistic about our odds.';
+            } else if (dice > 0.25) {
+              answer = uName + ':' + 'Your Flash Event is active now. You are being reminded. Please do not resist.';
+            } else {
+              answer = uName + ':' + 'There is a 97.6% chance of failure, but your Flash Event is active now.';
+            }
+
             msg.say({
               channel: usrID,
               link_names: true,
