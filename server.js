@@ -258,7 +258,7 @@ slapp.message(CHIME_KEYWORD, ['direct_message', 'direct_mention', 'mention', 'am
         }
         
         if (val) {
-          if (hr==12 || hr==15 || hr==19 || hr==20 || hr==22) {
+          if (hr==12 || hr==14 || hr==19 || hr==20 || hr==22) {
             let dice = Math.random();
             if (dice > 0.75) {
               answer = uName + ':' + 'Your Flash Event is active now. I\'ve got a bad feeling about…';
