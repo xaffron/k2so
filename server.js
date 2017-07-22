@@ -28,7 +28,7 @@ const officers = [
   'U2AFRRVL1','bluemoose',-5,
   'U2A6642T1','yer.reklaw',-7,
   'U4U5MRWGJ','blackvseries',4,
-  'U2AKRH076','tanga',-5,
+  'U2AKRH076','tanga',-4,
   'U2AC1PF29','jonosmol',-6,
   'U4V71QBN2','humy',4,
   'U2PV0FRM1','walkingdeadmann',-6,
@@ -258,7 +258,7 @@ slapp.message(CHIME_KEYWORD, ['direct_message', 'direct_mention', 'mention', 'am
         }
         
         if (val) {
-          if (hr==11 || hr==15 || hr==19 || hr==20 || hr==22) {
+          if (hr==12 || hr==15 || hr==19 || hr==20 || hr==22) {
             let dice = Math.random();
             if (dice > 0.75) {
               answer = uName + ':' + 'Your Flash Event is active now. I\'ve got a bad feeling about…';
