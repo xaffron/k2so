@@ -36,6 +36,7 @@ const officers = [
   'U58E503HV','ewokfam',1,
   'U2B697UFQ','hazqrd',-4,
   'U6ATMTSGH','scruffylookinghersh',-4
+  'U2C7PDX8R','meerkat',-5
                  ]
 
 //const officers = ['U2A3YP9MH','eoa',-5]
