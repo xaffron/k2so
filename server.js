@@ -208,7 +208,7 @@ slapp.message(/^(thanks|thank you)/i, ['mention', 'direct_message'], (msg) => {
   msg.say({
     link_names: true,
     as_user: true,
-    text: 'You\'re welcome.  I\m sorry about the slap.'
+    text: 'You\'re welcome.  I\'m sorry about the slap.'
   });
 })
 
@@ -329,7 +329,7 @@ slapp.message('.*', ['mention', 'direct_message'], (msg) => {
   } else if (dice > 0.25) {
     answer='I find that answer vague and unconvincing.';
   } else if (dice > 0.2) {
-    answer='Doesn\'t sound so bad to me.';
+    answer='I\'m not very optimistic about our odds.';
   } else if (dice > 0.15) {
     answer='Quiet!  And there\'s a fresh one if you mouth off again.';
   } else if (dice > 0.1) {
