@@ -209,7 +209,6 @@ slapp.message(/^(thanks|thank you)/i, ['mention', 'direct_message'], (msg) => {
     link_names: true,
     as_user: true,
     text: 'You\'re welcome.  I\m sorry about the slap.'
-  ]
   });
 })
 
