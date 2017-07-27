@@ -329,7 +329,7 @@ slapp.message('.*', ['mention', 'direct_message'], (msg) => {
   } else if (dice > 0.25) {
     answer='I find that answer vague and unconvincing.';
   } else if (dice > 0.2) {
-    answer='I\'m not very optimistic about our odds.';
+    answer='I haven\'t completed my calculations.';
   } else if (dice > 0.15) {
     answer='Quiet!  And there\'s a fresh one if you mouth off again.';
   } else if (dice > 0.1) {
