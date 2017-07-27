@@ -308,13 +308,13 @@ slapp.message('.*', ['mention', 'direct_message'], (msg) => {
   } else if (dice > 0.85) {
     answer='That is a bad idea.  I think so, and so does Cassian. What do I know?  My specialty is just strategic analysis.';
   } else if (dice > 0.8) {
-    answer='Doesn\'t sound so bad to me.';
+    answer='Doesn\'t sound so bad to me…';
   } else if (dice > 0.75) {
     answer='Not me... I can survive in space.';
   } else if (dice > 0.7) {
     answer='Did you know that wasn\'t me?';
   } else if (dice > 0.65) {
-    answer='I\'ve got a bad feeling about…';
+    answer='You\'re right, I should just wait on the ship.';
   } else if (dice > 0.6) {
     answer='Your behavior is continually unexpected.';
   } else if (dice > 0.55) {
@@ -332,7 +332,7 @@ slapp.message('.*', ['mention', 'direct_message'], (msg) => {
   } else if (dice > 0.25) {
     answer='I find that answer vague and unconvincing.';
   } else if (dice > 0.2) {
-    answer='I\'m not very optimistic about our odds.';
+    answer='Doesn\'t sound so bad to me.';
   } else if (dice > 0.15) {
     answer='Quiet!  And there\'s a fresh one if you mouth off again.';
   } else if (dice > 0.1) {
