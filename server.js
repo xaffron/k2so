@@ -83,12 +83,6 @@ slapp.message('help', ['mention', 'direct_message'], (msg) => {
   msg.say(HELP_TEXT)
 })
 
-//  User list.
-slapp
-  .message('listusers', 'direct_mention', (msg, text) => {
-  msg.say('You are user ' + msg.body.event.user);
-  msg.say(users.list);
-})
 //  User unenrolling.
 slapp
   .message('unenroll', 'direct_mention', (msg, text) => {
